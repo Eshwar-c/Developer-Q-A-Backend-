@@ -27,4 +27,7 @@ public class Product {
     public void setAnswers(String answers) {
         Answers = answers;
     }
+
+    public void setQuestions(Class<? extends ClassLoader> aClass) {
+    }
 }

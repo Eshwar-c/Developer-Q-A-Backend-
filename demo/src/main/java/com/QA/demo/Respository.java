@@ -15,7 +15,4 @@ public interface Respository extends JpaRepository<Product,Long> {
 
     Optional<Product> findById(String questions);
 
-    Object save(Product product);
-
-    Object save(Product product);
 }

@@ -15,4 +15,5 @@ public interface Respository extends JpaRepository<Product,Long> {
 
     Optional<Product> findById(String questions);
 
+    Optional<Product> findByQuestions(String questions);
 }

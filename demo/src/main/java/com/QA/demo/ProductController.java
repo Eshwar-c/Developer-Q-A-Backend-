@@ -7,23 +7,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping()
+@RequestMapping("/api/v1")
 public class ProductController {
     private final ProductService productService;
+
     @Autowired
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
-    @GetMapping("/product")
-    public ResponseEntity<Product> SaveProduct(@RequestBody Product product){
-        Product newProduct = (Product) productService.SaveProduct(product);
+
+    @PostMapping("/product")
+    public ResponseEntity<Product> saveProduct(@RequestBody Product product) {
+        Product newProduct = productService.saveProduct(product);
         return ResponseEntity.ok(newProduct);
     }
 
-    @GetMapping("/product/{Questions}")
-    public ResponseEntity<Product> getProductById(@PathVariable String Questions) {
-        Optional<Product> product = productService.getProductByQuestion(Questions);
+    @GetMapping("/product/{productId}")
+    public ResponseEntity<Product> getProductById(@PathVariable String productId) {
+        Optional<Product> product = productService.getProductByProduct(productId);
         return product.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
-
 }
